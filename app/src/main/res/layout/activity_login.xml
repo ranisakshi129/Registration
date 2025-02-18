@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/purple">
+
+    <ImageView
+        android:layout_width="@dimen/_220sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:src="@drawable/logo1"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/rectangle"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:paddingBottom="8dp"
+            android:text="Welcome back!"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:textStyle="bold"
+            android:text="@string/text"
+            android:textColor="@color/light_gray"
+            android:textSize="17sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:buttonTint="@color/radio_button_selector"
+            android:paddingBottom="20dp">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:textSize="@dimen/_10sdp"
+                android:buttonTint="@color/radio_button_selector"
+                android:theme="@style/Base.Widget.AppCompat.CompoundButton.RadioButton"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="1.1"
+                android:scaleY="1.1"
+                android:text="@string/doctor"
+                android:textColor="@color/white"
+                android:buttonTint="@color/radio_button_selector"
+                android:theme="@style/Base.Widget.AppCompat.CompoundButton.RadioButton"
+                android:textSize="@dimen/_10sdp" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/buttonrectangle"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:orientation="horizontal"
+                android:textColor="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/google"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_13sdp"
+                android:text="@string/gmail"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_marginLeft="@dimen/_70sdp"
+                android:src="@drawable/arrow"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonrectangle"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:paddingLeft="16dp"
+            android:orientation="horizontal"
+            android:textColor="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:src="@drawable/apple"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_13sdp"
+                android:text="@string/apple"
+                android:paddingLeft="@dimen/_10sdp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_marginLeft="@dimen/_67sdp"
+                android:textAlignment="viewEnd"
+                android:src="@drawable/arrow"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

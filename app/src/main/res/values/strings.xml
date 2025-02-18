@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Registration</string>
+    <string name="cont">Continue with Google</string>
+    <string name="apple">Continue with Apple</string>
+    <string name="text">We\'re glad to see you back. Sign in to explore more!</string>
+    <string name="doctor">Doctor</string>
+    <string name="user">User</string>
+    <string name="gmail">Continue with Gmail</string>
+    <string name="profile">Complete Your Profile</string>
+    <string name="personalinfo">Personal Information</string>
+    <string name="info">Personal Information</string>
+    <string name="text1">Helps us get to know you better- provides your basic details for a more personalized experience</string>
+    <string name="name">Full Name</string>
+    <string name="name1">Enter your full name</string>
+    <string name="email">Email Address</string>
+    <string name="email1">Enter your email id</string>
+    <string name="phone">Phone Number</string>
+    <string name="mobile">Enter Mobile Number</string>
+    <string name="gender">Gender</string>
+    <string name="dob">Date of Birth</string>
+    <string name="blood">Blood Group</string>
+    <string name="marital">Marital Status</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="contact">Emergency Contact</string>
+    <string name="location">Location</string>
+    <string name="next">Next</string>
+    <string name="name2">Invalid name. Only letters and spaces are allowed</string>
+    <string name="phone1">Enter phone number</string>
+    <string name="loc">Enter location</string>
+</resources>

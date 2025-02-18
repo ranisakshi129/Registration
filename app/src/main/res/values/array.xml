@@ -1,0 +1,5 @@
+<resources>
+    <string-array name="inputFiltersUppercase">
+        <item>ABCDEFGHIJKLMNOPQRSTUVWXYZ </item>
+    </string-array>
+</resources>
