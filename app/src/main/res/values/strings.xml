@@ -28,4 +28,15 @@
     <string name="name2">Invalid name. Only letters and spaces are allowed</string>
     <string name="phone1">Enter phone number</string>
     <string name="loc">Enter location</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_events_fragment">Hello Events Fragment</string>
+    <string name="hello_appointments_fragment">Hello Appointments Fragment</string>
+    <string name="hello_marketplace_fragment">Hello MarketPlace Fragment</string>
+    <string name="hello_home_fragment">Hello Home Fragment</string>
+    <string name="hello">Hello Umair!</string>
+    <string name="how">How are you feeling today!</string>
+    <string name="steps">You Steps Count Today</string>
+    <string name="step">5217</string>
+    <string name="step1">Steps</string>
 </resources>

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/home_icon"
             android:title="Home" />
         <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
-            android:title="Profile" />
+            android:id="@+id/nav_appointments"
+            android:icon="@drawable/appointments_icon"
+            android:title="Appointments" />
         <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings"
-            android:title="Settings" />
-        <!-- Add more menu items as needed -->
+            android:id="@+id/nav_events"
+            android:icon="@drawable/events_icon"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_marketplace"
+            android:icon="@drawable/marketplace_icon"
+            android:title="Marketplace"/>
     </group>
+
 </menu>
