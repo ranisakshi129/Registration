@@ -11,6 +11,5 @@ class HomeActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home2)
-
     }
 }

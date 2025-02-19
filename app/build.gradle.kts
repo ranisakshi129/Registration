@@ -8,6 +8,7 @@ android {
     compileSdk = 35
 
 
+
     defaultConfig {
         applicationId = "com.viw.registration"
         minSdk = 24
@@ -36,9 +37,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+
 }
 
 dependencies {
+
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.google.android.material:material:1.10.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")

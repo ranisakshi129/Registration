@@ -39,4 +39,24 @@
     <string name="steps">You Steps Count Today</string>
     <string name="step">5217</string>
     <string name="step1">Steps</string>
+    <string name="text2">What</string>
+    <string name="what">What</string>
+    <string name="would">Would</string>
+    <string name="you">you like</string>
+    <string name="todo">to do today</string>
+    <string name="appointment">Appointment</string>
+    <string name="chats">Chats</string>
+    <string name="video">Video \nConsultation</string>
+    <string name="audio">Audio \n Consultation</string>
+    <string name="connect">Connect with your\nDoctor and schedule\na appointment</string>
+    <string name="track">Track Your Vitals</string>
+    <string name="all">View All</string>
+    <string name="calorie">Calories burn</string>
+    <string name="number">1005</string>
+    <string name="calor">Calories</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="number72">72</string>
+    <string name="bpm">bpm</string>
+    <string name="spo">SPO2</string>
+    <string name="numberper">96%</string>
 </resources>

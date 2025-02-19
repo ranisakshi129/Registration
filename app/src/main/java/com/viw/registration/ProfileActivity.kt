@@ -602,7 +602,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             if (isValid) {
-                val intent = Intent(this, NextActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             }
