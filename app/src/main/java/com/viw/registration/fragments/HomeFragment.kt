@@ -18,7 +18,6 @@ class HomeFragment : Fragment() {
     private lateinit var adapter: CardAdapter
     private lateinit var viewPager2: ViewPager2
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
