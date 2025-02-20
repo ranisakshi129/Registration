@@ -59,4 +59,26 @@
     <string name="bpm">bpm</string>
     <string name="spo">SPO2</string>
     <string name="numberper">96%</string>
+    <string name="afiya">AFIYA\nFITCLUB</string>
+    <string name="secure">Secure Your Health Data</string>
+    <string name="unbreakable">Unbreakable\nSecurity</string>
+    <string name="realtime"><![CDATA[EHR & Real\nTime Insights]]></string>
+    <string name="privacy">Privacy First</string>
+    <string name="futureproof">Future- Proof\nYour Health</string>
+    <string name="monitize">Monitize Your Health Data</string>
+    <string name="self">Self Health Data</string>
+    <string name="market">MarketPlace</string>
+    <string name="band"><![CDATA[Connect Your Band\n& Monitor your Health]]></string>
+    <string name="stress">Stress</string>
+    <string name="sleep">Sleep</string>
+    <string name="hii_am">I AM\' AFIYA AI</string>
+    <string name="hii_ican">How I Can Help You!</string>
+    <string name="meditation">Psychology and Meditation</string>
+    <string name="guided">Guided Meditation Sessions</string>
+    <string name="mindfulness"><![CDATA[Mindfulness\n& Breathing\nExercise]]></string>
+    <string name="support">Personalized\nSupport</string>
+    <string name="relaxation"><![CDATA[Sleep & Relaxations aids]]></string>
+    <string name="bankage">Bankage</string>
+    <string name="pharmacy">PHARMACY</string>
+    <string name="NUTRITION">NUTRITION</string>
 </resources>

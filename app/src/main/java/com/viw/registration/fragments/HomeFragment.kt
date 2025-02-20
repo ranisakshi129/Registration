@@ -24,18 +24,18 @@ class HomeFragment : Fragment() {
     ): View? {
 
        val view = inflater.inflate(R.layout.fragment_home, container, false)
-       recyclerView = view.findViewById(R.id.recyclerView)
-       recyclerView.layoutManager = LinearLayoutManager(requireContext())
-       viewPager2 = view.findViewById(R.id.viewPager)
+//       recyclerView = view.findViewById(R.id.recyclerView)
+//       recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//       viewPager2 = view.findViewById(R.id.viewPager)
 
-        val cardData = listOf(
-            Card(R.drawable.card_button_image,R.drawable.fire, R.drawable.card_ellipse , "Calories burn" , "1005" ,"Calorie"),
-            Card(R.drawable.card_button_image,R.drawable.heart, R.drawable.card_ellipse , "Heart Rate" , "72" ,"bpm"),
-            Card(R.drawable.card_button_image,R.drawable.lungs, R.drawable.card_ellipse , "SPO2" , "96%" ,"Spm"),
-            )
-
-        adapter = CardAdapter(cardData)
-        recyclerView.adapter = adapter
+//        val cardData = listOf(
+//            Card(R.drawable.card_button_image,R.drawable.fire, R.drawable.card_ellipse , "Calories burn" , "1005" ,"Calorie"),
+//            Card(R.drawable.card_button_image,R.drawable.heart, R.drawable.card_ellipse , "Heart Rate" , "72" ,"bpm"),
+//            Card(R.drawable.card_button_image,R.drawable.lungs, R.drawable.card_ellipse , "SPO2" , "96%" ,"Spm"),
+//            )
+//
+//        adapter = CardAdapter(cardData)
+//        recyclerView.adapter = adapter
 
         return view
     }

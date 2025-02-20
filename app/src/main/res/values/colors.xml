@@ -27,7 +27,13 @@
     <color name="card2_colorEnd">#861818</color>
     <color name="card3_colorStart">#78FFB4</color>
     <color name="card3_colorEnd">#287F4F</color>
-    <color name="card3_colorEnd">#287F4F</color>
-    <color name="card3_colorEnd">#287F4F</color>
+    <color name="light_pink">#FADCD6</color>
+    <color name="black_2">#0B0E14</color>
+    <color name="creme3">#C9BCC9</color>
+    <color name="creme4">#F5EDF2</color>
+    <color name="gray1">#504E50</color>
+    <color name="dark_orange">#E9833E</color>
+    <color name="light_orange">#D2985E</color>
+    <color name="dark_black1">#0E0E0F</color>
 
 </resources>
