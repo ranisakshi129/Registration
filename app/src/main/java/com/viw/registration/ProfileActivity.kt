@@ -37,6 +37,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.hbb20.CountryCodePicker
+import com.viw.registration.databinding.ActivityProfileBinding
 import de.hdodenhof.circleimageview.CircleImageView
 
 import java.io.File
@@ -48,99 +49,56 @@ import java.util.Locale
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var profileImageIv: CircleImageView
-    private lateinit var cameraIconIv: ImageView
+    private lateinit var binding : ActivityProfileBinding
     private var photoUri: Uri? = null
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_IMAGE_PICK = 2
     private val CAMERA_PERMISSION_REQUEST = 100
     private var selectedDob: String? = null
     private var currentPhotoPath: String? = null
-    private lateinit var ccp: CountryCodePicker
-    private lateinit var phoneEdt: EditText
-    private lateinit var phoneErrorText: TextView
-    private lateinit var emergencyccp: CountryCodePicker
-    private lateinit var emergencyPhoneEdt: EditText
-    private lateinit var emergencyphoneErrorText: TextView
-    private lateinit var genderErrorText: TextView
-    private lateinit var dobErrorText: TextView
-    private lateinit var bloodErrorText: TextView
-    private lateinit var statusErrorText: TextView
-    private lateinit var heightErrorText: TextView
-    private lateinit var weightErrorText: TextView
-    private lateinit var locationErrorText: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_profile)
-        cameraIconIv = findViewById(R.id.cameraIconIv)
-        profileImageIv = findViewById(R.id.profileImageIv)
-        profileImageIv = findViewById(R.id.profileImageIv)
 
-        cameraIconIv.setOnClickListener {
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        binding.cameraIconIv.setOnClickListener {
             showImageOptions()
         }
 
         val locationEdt = findViewById<EditText>(R.id.locationEdt)
         locationEdt.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_WORDS
+        binding.nameEdt.inputType = InputType.TYPE_TEXT_FLAG_CAP_WORDS
+        binding.emailEdt.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
 
-
-        var nextBtn: Button = findViewById(R.id.nextBtn)
-        val arrowIv: ImageView = findViewById(R.id.arrowIv)
-        var nameEdt: EditText = findViewById(R.id.nameEdt)
-        nameEdt.inputType = InputType.TYPE_TEXT_FLAG_CAP_WORDS
-        var nameEdt2: TextView = findViewById(R.id.name3)
-        var phoneEdt2: TextView = findViewById(R.id.phoneErrorText)
-        var emailEdt: EditText = findViewById(R.id.emailEdt)
-        emailEdt.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        var emailEdt2: TextView = findViewById(R.id.email3)
-        ccp = findViewById(R.id.countryCodePicker)
-        phoneEdt = findViewById(R.id.phoneEdt)
-        phoneEdt.inputType = InputType.TYPE_CLASS_PHONE
-        phoneErrorText = findViewById(R.id.phoneErrorText)
-        emergencyccp = findViewById(R.id.emergencyCountryCodePicker)
-        emergencyPhoneEdt = findViewById(R.id.emergencyPhoneEdt)
-        emergencyphoneErrorText = findViewById(R.id.emergencyPhoneErrorText)
-        genderErrorText = findViewById(R.id.genderErrorText)
-        dobErrorText = findViewById(R.id.dobErrorText)
-        bloodErrorText = findViewById(R.id.bloodGroupErrorText)
-        statusErrorText = findViewById(R.id.statusErrorText)
-        heightErrorText = findViewById(R.id.heightErrorText)
-        weightErrorText = findViewById(R.id.weightErrorText)
-        locationErrorText = findViewById(R.id.locationErrorText)
-
-
-        arrowIv.setOnClickListener() {
+        binding.arrowIv.setOnClickListener() {
             finish()
         }
-
-        val dobLayout = findViewById<LinearLayout>(R.id.dobLayout)
-        val dobTextView = findViewById<TextView>(R.id.dobTextView)
-
-        dobLayout.setOnClickListener {
-            showDatePicker(dobTextView, dobErrorText)
+        binding.dobLayout.setOnClickListener {
+            showDatePicker(binding.dobTv, binding.dobErrorTv)
         }
 
-        nameEdt.addTextChangedListener(object : TextWatcher {
+        binding.nameEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val name = s.toString().trim()
 
                 val capitalizedName = capitalizeWords(name)
                 if (capitalizedName != name) {
-                    nameEdt.removeTextChangedListener(this) // Prevents infinite loop
-                    nameEdt.setText(capitalizedName)
-                    nameEdt.setSelection(capitalizedName.length) // Moves cursor to end
-                    nameEdt.addTextChangedListener(this)
+                    binding.nameEdt.removeTextChangedListener(this) // Prevents infinite loop
+                    binding.nameEdt.setText(capitalizedName)
+                    binding.nameEdt.setSelection(capitalizedName.length) // Moves cursor to end
+                    binding.nameEdt.addTextChangedListener(this)
                 }
 
                 val errorMessage = isValidName(capitalizedName)
                 if (errorMessage != null) {
-                    nameEdt2.visibility = View.VISIBLE
-                    nameEdt2.text = errorMessage
+                    binding.nameErrorTv.visibility = View.VISIBLE
+                    binding.nameErrorTv.text = errorMessage
                 } else {
-                    nameEdt2.visibility = View.GONE
+                    binding.nameErrorTv.visibility = View.GONE
                 }
             }
 
@@ -148,15 +106,15 @@ class ProfileActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        emailEdt.addTextChangedListener(object : TextWatcher {
+        binding.emailEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val email = s.toString().trim()
 
                 if (email.isEmpty()) {
-                    emailEdt2.visibility = View.VISIBLE
-                    emailEdt2.text = "Please enter your email."
+                    binding.emailErrorTv.visibility = View.VISIBLE
+                    binding.emailErrorTv.text = "Please enter your email."
                 } else {
-                    emailEdt2.visibility = View.GONE
+                    binding.emailErrorTv.visibility = View.GONE
                 }
             }
 
@@ -165,26 +123,26 @@ class ProfileActivity : AppCompatActivity() {
         })
 
 
-        phoneEdt.addTextChangedListener(object : TextWatcher {
+        binding.phoneEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val phone = s.toString().trim()
 
                 if (phone.length > 10) {
-                    phoneEdt.removeTextChangedListener(this)
-                    phoneEdt.setText(phone.substring(0, 10))  // Trim extra digits
-                    phoneEdt.setSelection(10)  // Move cursor to end
-                    phoneEdt.addTextChangedListener(this)
+                    binding.phoneEdt.removeTextChangedListener(this)
+                    binding.phoneEdt.setText(phone.substring(0, 10))  // Trim extra digits
+                    binding.phoneEdt.setSelection(10)  // Move cursor to end
+                    binding.phoneEdt.addTextChangedListener(this)
                     return
                 }
 
                 if (phone.isEmpty()) {
-                    phoneEdt2.visibility = View.VISIBLE // No error while empty
-                    phoneEdt2.text = "Please enter your phone number."
+                    binding.phoneErrorTv.visibility = View.VISIBLE // No error while empty
+                    binding.phoneErrorTv.text = "Please enter your phone number."
                 } else if (phone.length == 1) {
-                    phoneEdt2.visibility = View.VISIBLE
-                    phoneEdt2.text = "Please enter 10-digit number."
+                    binding.phoneErrorTv.visibility = View.VISIBLE
+                    binding.phoneErrorTv.text = "Please enter 10-digit number."
                 } else {
-                    phoneEdt2.visibility = View.GONE  // Hide error when 10 digits are entered
+                    binding.phoneErrorTv.visibility = View.GONE  // Hide error when 10 digits are entered
                 }
             }
 
@@ -193,25 +151,25 @@ class ProfileActivity : AppCompatActivity() {
         })
 
 
-        emergencyPhoneEdt.addTextChangedListener(object : TextWatcher {
+        binding.emergencyPhoneEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val emergencyPhone = s.toString().trim()
 
                 if (emergencyPhone.length > 10) {
-                    emergencyPhoneEdt.removeTextChangedListener(this)
-                    emergencyPhoneEdt.setText(emergencyPhone.substring(0, 10))  // Trim extra digits
-                    emergencyPhoneEdt.setSelection(10)  // Move cursor to end
-                    emergencyPhoneEdt.addTextChangedListener(this)
+                    binding.emergencyPhoneEdt.removeTextChangedListener(this)
+                    binding.emergencyPhoneEdt.setText(emergencyPhone.substring(0, 10))  // Trim extra digits
+                    binding.emergencyPhoneEdt.setSelection(10)  // Move cursor to end
+                    binding.emergencyPhoneEdt.addTextChangedListener(this)
                     return
                 }
                 if (emergencyPhone.isEmpty()) {
-                    emergencyphoneErrorText.visibility = View.VISIBLE  // No error while empty
-                    emergencyphoneErrorText.text = "Please enter your phone number."
+                    binding.emergencyPhoneErrorTv.visibility = View.VISIBLE  // No error while empty
+                    binding.emergencyPhoneErrorTv.text = "Please enter your phone number."
                 } else if (emergencyPhone.length == 1) {
-                    emergencyphoneErrorText.visibility = View.VISIBLE
-                    emergencyphoneErrorText.text = "Please enter 10 digit number."
+                    binding.emergencyPhoneErrorTv.visibility = View.VISIBLE
+                    binding.emergencyPhoneErrorTv.text = "Please enter 10 digit number."
                 } else {
-                    emergencyphoneErrorText.visibility =
+                    binding.emergencyPhoneErrorTv.visibility =
                         View.GONE  // Hide error when 10 digits are entered
                 }
             }
@@ -240,16 +198,6 @@ class ProfileActivity : AppCompatActivity() {
             "60 kg", "65 kg", "70 kg", "75 kg", "80 kg", "85 kg", "90 kg", "95 kg", "100 kg+"
         )
 
-        val genderSpinner: Spinner = findViewById(R.id.genderSpinner)
-        val genderErrorText: TextView = findViewById(R.id.genderErrorText)
-        val maritalStatusSpinner: Spinner = findViewById(R.id.statusSpinner)
-        val maritalStatusErrorText: TextView = findViewById(R.id.statusErrorText)
-        val bloodSpinner: Spinner = findViewById(R.id.bloodSpinner)
-        val bloodErrorText: TextView = findViewById(R.id.bloodGroupErrorText)
-        val heightSpinner: Spinner = findViewById(R.id.heightSpinner)
-        val weightSpinner: Spinner = findViewById(R.id.weightSpinner)
-        val heightErrorText: TextView = findViewById(R.id.heightErrorText)
-        val weightErrorText: TextView = findViewById(R.id.weightErrorText)
 
          fun createSpinnerAdapter1(
             context: Context,
@@ -282,15 +230,15 @@ class ProfileActivity : AppCompatActivity() {
         }
 
 
-        genderSpinner.adapter = createSpinnerAdapter1(this, genderOptions)
-        maritalStatusSpinner.adapter = createSpinnerAdapter1(this, maritalStatusOptions)
-        bloodSpinner.adapter = createSpinnerAdapter1(this, bloodOptions)
-        heightSpinner.adapter = createSpinnerAdapter1(this, heightOptions)
-        weightSpinner.adapter = createSpinnerAdapter1(this, weightOptions)
+        binding.genderSpinner.adapter = createSpinnerAdapter1(this, genderOptions)
+        binding.statusSpinner.adapter = createSpinnerAdapter1(this, maritalStatusOptions)
+        binding.bloodSpinner.adapter = createSpinnerAdapter1(this, bloodOptions)
+        binding.heightSpinner.adapter = createSpinnerAdapter1(this, heightOptions)
+        binding.weightSpinner.adapter = createSpinnerAdapter1(this, weightOptions)
 
 
 
-        genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.genderSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -299,10 +247,39 @@ class ProfileActivity : AppCompatActivity() {
             ) {
                 if (position == 0) {
                     // First item (hint) is selected
-                    genderErrorText.visibility = View.GONE
+                    binding.genderErrorTv.visibility = View.GONE
                 } else {
                     // A valid gender is selected
-                    genderErrorText.visibility = View.GONE
+                    binding.genderErrorTv.visibility = View.GONE
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
+        binding.genderSpinner.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                // Open the dropdown only when the user explicitly taps the Spinner
+                binding.genderSpinner.performClick()
+            }
+            true
+        }
+
+
+        binding.statusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position == 0) {
+                    // First item (hint) is selected
+                    binding.statusErrorTv.visibility = View.GONE
+                } else {
+                    // A valid gender is selected
+                    binding.statusErrorTv.visibility = View.GONE
                 }
             }
 
@@ -312,18 +289,16 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Add custom touch listener to prevent dropdown during scrolling
-        genderSpinner.setOnTouchListener { _, event ->
+        binding.statusSpinner.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Open the dropdown only when the user explicitly taps the Spinner
-                genderSpinner.performClick()
+                binding.statusSpinner.performClick()
             }
             true
         }
 
 
-
-
-        maritalStatusSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.bloodSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -332,10 +307,10 @@ class ProfileActivity : AppCompatActivity() {
             ) {
                 if (position == 0) {
                     // First item (hint) is selected
-                    maritalStatusErrorText.visibility = View.GONE
+                    binding.bloodGroupErrorTv.visibility = View.GONE
                 } else {
                     // A valid gender is selected
-                    maritalStatusErrorText.visibility = View.GONE
+                    binding.bloodGroupErrorTv.visibility = View.GONE
                 }
             }
 
@@ -345,16 +320,16 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Add custom touch listener to prevent dropdown during scrolling
-        maritalStatusSpinner.setOnTouchListener { _, event ->
+        binding.bloodSpinner.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Open the dropdown only when the user explicitly taps the Spinner
-                maritalStatusSpinner.performClick()
+                binding.bloodSpinner.performClick()
             }
             true
         }
 
 
-        bloodSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.heightSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -363,10 +338,10 @@ class ProfileActivity : AppCompatActivity() {
             ) {
                 if (position == 0) {
                     // First item (hint) is selected
-                    bloodErrorText.visibility = View.GONE
+                    binding.heightErrorTv.visibility = View.GONE
                 } else {
                     // A valid gender is selected
-                    bloodErrorText.visibility = View.GONE
+                    binding.heightErrorTv.visibility = View.GONE
                 }
             }
 
@@ -376,16 +351,15 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Add custom touch listener to prevent dropdown during scrolling
-        bloodSpinner.setOnTouchListener { _, event ->
+        binding.heightSpinner.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Open the dropdown only when the user explicitly taps the Spinner
-                bloodSpinner.performClick()
+                binding.heightSpinner.performClick()
             }
             true
         }
 
-
-        heightSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.weightSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -394,10 +368,10 @@ class ProfileActivity : AppCompatActivity() {
             ) {
                 if (position == 0) {
                     // First item (hint) is selected
-                    heightErrorText.visibility = View.GONE
+                    binding.weightErrorTv.visibility = View.GONE
                 } else {
                     // A valid gender is selected
-                    heightErrorText.visibility = View.GONE
+                    binding.weightErrorTv.visibility = View.GONE
                 }
             }
 
@@ -407,56 +381,25 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Add custom touch listener to prevent dropdown during scrolling
-        heightSpinner.setOnTouchListener { _, event ->
+        binding.weightSpinner.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Open the dropdown only when the user explicitly taps the Spinner
-                heightSpinner.performClick()
-            }
-            true
-        }
-
-        weightSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (position == 0) {
-                    // First item (hint) is selected
-                    weightErrorText.visibility = View.GONE
-                } else {
-                    // A valid gender is selected
-                    weightErrorText.visibility = View.GONE
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
-            }
-        }
-
-        // Add custom touch listener to prevent dropdown during scrolling
-        weightSpinner.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                // Open the dropdown only when the user explicitly taps the Spinner
-                weightSpinner.performClick()
+                binding.weightSpinner.performClick()
             }
             true
         }
 
 
-        locationEdt.addTextChangedListener(object : TextWatcher {
+        binding.locationEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val location = s.toString().trim()
                 if (location.isEmpty()) {
-                    locationErrorText.visibility = View.VISIBLE
-                    locationErrorText.text = "Please enter your location."
+                    binding.locationErrorTv.visibility = View.VISIBLE
+                    binding.locationErrorTv.text = "Please enter your location."
                 } else if (isValidLocation(location)) {
-                    locationErrorText.visibility = View.GONE
+                    binding.locationErrorTv.visibility = View.GONE
                 } else {
-                    locationErrorText.visibility = View.GONE
-                   // locationErrorText.text = "Invalid location format."
+                    binding.locationErrorTv.visibility = View.GONE
                 }
             }
 
@@ -465,139 +408,139 @@ class ProfileActivity : AppCompatActivity() {
 
         })
 
-        nextBtn.setOnClickListener {
-            val name = nameEdt.text.toString().trim()
-            val email = emailEdt.text.toString().trim()
-            val phone = phoneEdt.text.toString().trim()
-            val emergencyPhone = emergencyPhoneEdt.text.toString().trim()
-            val dob = dobTextView.text.toString().trim()
-            val selectedGender = genderSpinner.selectedItem.toString().trim()
-            val bloodGroup = bloodSpinner.selectedItem.toString().trim()
-            val maritalStatus = maritalStatusSpinner.selectedItem.toString().trim()
-            val height = heightSpinner.selectedItem.toString().trim()
-            val weight = weightSpinner.selectedItem.toString().trim()
+        binding.nextBtn.setOnClickListener {
+            val name = binding.nameEdt.text.toString().trim()
+            val email = binding.emailEdt.text.toString().trim()
+            val phone = binding.phoneEdt.text.toString().trim()
+            val emergencyPhone = binding.emergencyPhoneEdt.text.toString().trim()
+            val dob = binding.dobTv.text.toString().trim()
+            val selectedGender = binding.genderSpinner.selectedItem.toString().trim()
+            val bloodGroup = binding.bloodSpinner.selectedItem.toString().trim()
+            val maritalStatus = binding.statusSpinner.selectedItem.toString().trim()
+            val height = binding.heightSpinner.selectedItem.toString().trim()
+            val weight = binding.weightSpinner.selectedItem.toString().trim()
             val location = locationEdt.text.toString().trim()
 
             var isValid = true
 
             val capitalizedName = capitalizeWords(name)
-            nameEdt.setText(capitalizedName)
+            binding.nameEdt.setText(capitalizedName)
 
             val nameError = isValidName(capitalizedName)
             if (nameError != null) {
-                nameEdt2.visibility = View.VISIBLE
-                nameEdt2.text = nameError
+                binding.nameErrorTv.visibility = View.VISIBLE
+                binding.nameErrorTv.text = nameError
                 isValid = false
             } else {
-                nameEdt2.visibility = View.GONE
+                binding.nameErrorTv.visibility = View.GONE
             }
 
             val emailError = isValidEmail(email)
             if (emailError != null) {
-                emailEdt2.visibility = View.VISIBLE
-                emailEdt2.text = emailError
+                binding.emailErrorTv.visibility = View.VISIBLE
+                binding.emailErrorTv.text = emailError
                 isValid = false
             } else {
-                emailEdt2.visibility = View.GONE
+                binding.emailErrorTv.visibility = View.GONE
             }
 
 
             val phoneError = isValidPhone(phone)
             if (phoneError != null) {
-                phoneEdt2.visibility = View.VISIBLE
-                phoneEdt2.text = phoneError
+                binding.phoneErrorTv.visibility = View.VISIBLE
+                binding.phoneErrorTv.text = phoneError
                 isValid = false
             } else {
-                phoneEdt2.visibility = View.GONE
+                binding.phoneErrorTv.visibility = View.GONE
             }
 
 
             val emergencyPhoneError = isValidPhone(emergencyPhone)
             if (emergencyPhoneError != null) {
-                emergencyphoneErrorText.visibility = View.VISIBLE
-                emergencyphoneErrorText.text = phoneError
+                binding.emergencyPhoneErrorTv.visibility = View.VISIBLE
+                binding.emergencyPhoneErrorTv.text = phoneError
                 isValid = false
             } else {
-                emergencyphoneErrorText.visibility = View.GONE
+                binding.emergencyPhoneErrorTv.visibility = View.GONE
             }
 
             if (dob == "Select Date of Birth") {
-                dobErrorText.visibility = View.VISIBLE
-                dobErrorText.text = "Please select your Date of Birth."
+                binding.dobErrorTv.visibility = View.VISIBLE
+                binding.dobErrorTv.text = "Please select your Date of Birth."
                 isValid = false
             } else {
-                dobErrorText.visibility = View.GONE
+                binding.dobErrorTv.visibility = View.GONE
             }
 
             if (selectedGender == "Select Gender") {
-                genderErrorText.visibility = View.VISIBLE
-                genderErrorText.text = "Please select a gender."
+                binding.genderErrorTv.visibility = View.VISIBLE
+                binding.genderErrorTv.text = "Please select a gender."
                 isValid = false
             } else {
-                genderErrorText.visibility = View.GONE
+                binding.genderErrorTv.visibility = View.GONE
             }
 
             if (bloodGroup == "Select Blood Group") {
-                bloodErrorText.visibility = View.VISIBLE
-                bloodErrorText.text = "Please select a blood group."
+               binding.bloodGroupErrorTv.visibility = View.VISIBLE
+                binding.bloodGroupErrorTv.text = "Please select a blood group."
                 isValid = false
             } else {
-                bloodErrorText.visibility = View.GONE
+                binding.bloodGroupErrorTv.visibility = View.GONE
             }
 
             if (maritalStatus == "Select Marital Status") {
-                statusErrorText.visibility = View.VISIBLE
-                statusErrorText.text = "Please select a marital status."
+                binding.statusErrorTv.visibility = View.VISIBLE
+                binding.statusErrorTv.text = "Please select a marital status."
                 isValid = false
             } else {
-                statusErrorText.visibility = View.GONE
+                binding.statusErrorTv.visibility = View.GONE
             }
 
             if (height == "Select Height") {
-                heightErrorText.visibility = View.VISIBLE
-                heightErrorText.text = "Please select a height."
+                binding.heightErrorTv.visibility = View.VISIBLE
+                binding.heightErrorTv.text = "Please select a height."
                 isValid = false
             } else {
-                heightErrorText.visibility = View.GONE
+                binding.heightErrorTv.visibility = View.GONE
             }
 
             if (weight == "Select Weight") {
-                weightErrorText.visibility = View.VISIBLE
-                weightErrorText.text = "Please select a weight."
+                binding.weightErrorTv.visibility = View.VISIBLE
+                binding.weightErrorTv.text = "Please select a weight."
                 isValid = false
             } else {
-                weightErrorText.visibility = View.GONE
+                binding.weightErrorTv.visibility = View.GONE
             }
 
             if (location.isEmpty()) {
-                locationErrorText.visibility = View.VISIBLE
-                locationErrorText.text = "Please enter your location."
+                binding.locationErrorTv.visibility = View.VISIBLE
+                binding.locationErrorTv.text = "Please enter your location."
                 isValid = false
             } else {
-                locationErrorText.visibility = View.GONE
+                binding.locationErrorTv.visibility = View.GONE
             }
 
 
             if (isValidPhone(phone) != null) {
-                phoneEdt2.visibility = View.VISIBLE
-                phoneEdt2.text = isValidPhone(phone)  // Show specific error message
+                binding.phoneErrorTv.visibility = View.VISIBLE
+                binding.phoneErrorTv.text = isValidPhone(phone)  // Show specific error message
                 isValid = false
             } else {
-                phoneEdt2.visibility = View.GONE
+                binding.phoneErrorTv.visibility = View.GONE
             }
 
             if (isValidEmergencyPhone(phone) != null) {
-                emergencyphoneErrorText.visibility = View.VISIBLE
-                emergencyphoneErrorText.text = isValidPhone(phone)  // Show specific error message
+                binding.phoneErrorTv.visibility = View.VISIBLE
+                binding.phoneErrorTv.text = isValidPhone(phone)  // Show specific error message
                 isValid = false
             } else {
-                emergencyphoneErrorText.visibility = View.GONE
+                binding.phoneErrorTv.visibility = View.GONE
             }
 
 
             if (!isValidLocation(location) && !location.isEmpty()) {
-                locationErrorText.visibility = View.VISIBLE
-                locationErrorText.text = "Invalid location."
+                binding.locationErrorTv.visibility = View.VISIBLE
+                binding.locationErrorTv.text = "Invalid location."
                 isValid = false
             }
 
@@ -617,8 +560,8 @@ class ProfileActivity : AppCompatActivity() {
 
         val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
             selectedDob = "$selectedDay/${selectedMonth + 1}/$selectedYear"  // Save selected DOB
-            dobTextView.text = selectedDob
-            dobTextView.setTextColor(ContextCompat.getColor(this, R.color.black)) // Change text color after selection
+            binding.dobTv.text = selectedDob
+            binding.dobTv.setTextColor(ContextCompat.getColor(this, R.color.black)) // Change text color after selection
 
             // Hide error when DOB is selected
             dobErrorText.visibility = View.GONE
@@ -764,7 +707,7 @@ class ProfileActivity : AppCompatActivity() {
             when (requestCode) {
                 REQUEST_IMAGE_CAPTURE -> {
                     val imageBitmap = BitmapFactory.decodeFile(currentPhotoPath)
-                    profileImageIv.setImageBitmap(imageBitmap)
+                    binding.profileImageIv.setImageBitmap(imageBitmap)
                     photoUri = Uri.fromFile(File(currentPhotoPath)) // Update photoUri
                 }
                 REQUEST_IMAGE_PICK -> {
@@ -780,16 +723,16 @@ class ProfileActivity : AppCompatActivity() {
     private fun setImage(uri: Uri) {
         Glide.with(this)
             .load(uri)
-            .into(profileImageIv)
+            .into(binding.profileImageIv)
 
         photoUri = uri
-        cameraIconIv.visibility = View.VISIBLE // Ensure the camera icon is visible
+        binding.cameraIconIv.visibility = View.VISIBLE // Ensure the camera icon is visible
     }
 
     private fun deleteImage() {
-        profileImageIv.setImageResource(R.drawable.circleimage) // Reset to default
+        binding.profileImageIv.setImageResource(R.drawable.circleimage) // Reset to default
         photoUri = null
-        cameraIconIv.visibility = View.VISIBLE
+        binding.cameraIconIv.visibility = View.VISIBLE
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

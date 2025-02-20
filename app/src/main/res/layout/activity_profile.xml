@@ -139,7 +139,7 @@
                 android:hint="@string/name1"/>
             
             <TextView
-                android:id="@+id/name3"
+                android:id="@+id/nameErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -170,7 +170,7 @@
                 android:hint="@string/email1"/>
 
             <TextView
-                android:id="@+id/email3"
+                android:id="@+id/emailErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -222,7 +222,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/phoneErrorText"
+                android:id="@+id/phoneErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -239,7 +239,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:text="@string/gender"/>
-
 
 
             <LinearLayout
@@ -260,7 +259,7 @@
 
 
             <TextView
-                android:id="@+id/genderErrorText"
+                android:id="@+id/genderErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -292,7 +291,7 @@
                 android:id="@+id/dobLayout">
 
                 <TextView
-                    android:id="@+id/dobTextView"
+                    android:id="@+id/dobTv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -311,7 +310,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/dobErrorText"
+                android:id="@+id/dobErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -348,7 +347,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/bloodGroupErrorText"
+                android:id="@+id/bloodGroupErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -385,7 +384,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/statusErrorText"
+                android:id="@+id/statusErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -421,7 +420,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/heightErrorText"
+                android:id="@+id/heightErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -458,7 +457,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/weightErrorText"
+                android:id="@+id/weightErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"
@@ -510,7 +509,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/emergencyPhoneErrorText"
+                android:id="@+id/emergencyPhoneErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Invalid phone number"
@@ -541,7 +540,7 @@
                 android:background="@drawable/rect1"/>
 
             <TextView
-                android:id="@+id/locationErrorText"
+                android:id="@+id/locationErrorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_12sdp"

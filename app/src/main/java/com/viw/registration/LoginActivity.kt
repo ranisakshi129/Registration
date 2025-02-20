@@ -7,22 +7,24 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.viw.registration.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
+    private  lateinit var binding : ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
 
-        val radioGroup : RadioGroup = findViewById(R.id.radioGroup)
-        var linearLayoutBtn1 : LinearLayout = findViewById(R.id.btn1)
-        var linearLayoutBtn2 : LinearLayout = findViewById(R.id.btn2)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         fun isOptionSelected() : Boolean {
-            return radioGroup.checkedRadioButtonId != -1
+            return binding.radioGroup.checkedRadioButtonId != -1
         }
 
-        linearLayoutBtn1.setOnClickListener(){
+        binding.btn1.setOnClickListener(){
             if(isOptionSelected()){
             var intent = Intent(this,ProfileActivity::class.java)
             startActivity(intent)
@@ -33,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        linearLayoutBtn2.setOnClickListener() {
+        binding.btn2.setOnClickListener() {
             if (isOptionSelected()) {
                 var intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)

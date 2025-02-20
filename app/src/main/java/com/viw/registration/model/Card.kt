@@ -1,6 +1,7 @@
 package com.viw.registration.model
 
 data class Card(
+
     val buttonImage : Int,
     val image: Int,
     val backgroundImage: Int,

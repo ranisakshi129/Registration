@@ -377,8 +377,8 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
+                android:id="@+id/recyclerView1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -1183,7 +1183,6 @@
                         android:layout_marginLeft="@dimen/_82sdp"
                         android:layout_marginTop="@dimen/_70sdp"
                         android:src="@drawable/meditation_circle" />
-
 
                     <TextView
                         android:layout_width="wrap_content"

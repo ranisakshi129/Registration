@@ -7,7 +7,9 @@ android {
     namespace = "com.viw.registration"
     compileSdk = 35
 
-
+    viewBinding {
+        enable = true
+    }
 
     defaultConfig {
         applicationId = "com.viw.registration"
