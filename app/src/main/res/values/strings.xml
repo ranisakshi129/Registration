@@ -81,4 +81,17 @@
     <string name="bankage">Bankage</string>
     <string name="pharmacy">PHARMACY</string>
     <string name="NUTRITION">NUTRITION</string>
+    <string name="saves">SAVES LIVES WITH\nAFIYA REAL TIME\nHEALTH MONITORING</string>
+    <string name="t1">Zhafira Azalea</string>
+    <string name="t2">zafira@gmail.com</string>
+    <string name="drawerProfile">My Profile</string>
+    <string name="draweAppointments">My Appointments</string>
+    <string name="drawermedical">Medical Records</string>
+    <string name="drawerconsult">Consultations</string>
+    <string name="drawerdoctors">Saved Doctors</string>
+    <string name="drawerevents">My Event</string>
+    <string name="drawerterms">Terms and Conditions</string>
+    <string name="drawerprivacy">Privacy Policy</string>
+    <string name="drawerhelps"><![CDATA[Help & FAQs]]></string>
+    <string name="drawersign">Sign Out</string>
 </resources>

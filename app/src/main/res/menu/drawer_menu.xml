@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_profile"
+        android:title="My Profile"
+        android:icon="@drawable/drawer_profile"/>
+
+    <item
+        android:id="@+id/nav_appointments"
+        android:title="My Appointments"
+        android:icon="@drawable/drawer_appointments"/>
+
+    <item
+        android:id="@+id/nav_records"
+        android:title="Medical Records"
+        android:icon="@drawable/drawer_medical"/>
+
+    <item
+        android:id="@+id/nav_consultations"
+        android:title="Consultations"
+        android:icon="@drawable/drawer_consultations"/>
+
+    <item
+        android:id="@+id/nav_saved_doctors"
+        android:title="Saved Doctors"
+        android:icon="@drawable/drawer_doctors"/>
+
+    <item
+        android:id="@+id/nav_events"
+        android:title="My Event"
+        android:icon="@drawable/drawer_doctors"/>
+
+    <item
+        android:id="@+id/nav_terms"
+        android:title="Terms and Conditions"
+        android:icon="@drawable/drawer_termsconditions"/>
+
+    <item
+        android:id="@+id/nav_privacy"
+        android:title="Privacy Policy"
+        android:icon="@drawable/drawer_policy"/>
+
+    <item
+        android:id="@+id/nav_faq"
+        android:title="Help FAQs"
+        android:icon="@drawable/drawer_helps"/>
+
+    <item
+        android:id="@+id/nav_signout"
+        android:title="Sign Out"
+        android:icon="@drawable/drawer_signout"/>
+</menu>

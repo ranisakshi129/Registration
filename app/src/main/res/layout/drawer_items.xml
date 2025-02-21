@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/drawer_profile" />
+
+    <TextView
+        android:id="@+id/menu_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="My Profile"
+        android:textColor="@color/purple"
+        android:textSize="16sp"
+        android:layout_gravity="center_vertical"
+        android:paddingStart="16dp"/>
+
+    <ImageView
+        android:id="@+id/arrow_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/drawer_arrow" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/drawer_line"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:src="@drawable/drawer_line"/>
+
+</LinearLayout>

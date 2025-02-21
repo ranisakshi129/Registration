@@ -10,32 +10,33 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.viw.registration.adapter.CardAdapter
+import com.viw.registration.adapter.CardItem2Adapter
 import com.viw.registration.model.Card
+import com.viw.registration.model.CardItem2
 
 class HomeFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: CardAdapter
-    private lateinit var viewPager2: ViewPager2
+    private lateinit var cardItem2Rv: RecyclerView
+    private lateinit var cardItem2Adapter: CardItem2Adapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-       val view = inflater.inflate(R.layout.fragment_home, container, false)
-//       recyclerView = view.findViewById(R.id.recyclerView)
-//       recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//       viewPager2 = view.findViewById(R.id.viewPager)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-//        val cardData = listOf(
-//            Card(R.drawable.card_button_image,R.drawable.fire, R.drawable.card_ellipse , "Calories burn" , "1005" ,"Calorie"),
-//            Card(R.drawable.card_button_image,R.drawable.heart, R.drawable.card_ellipse , "Heart Rate" , "72" ,"bpm"),
-//            Card(R.drawable.card_button_image,R.drawable.lungs, R.drawable.card_ellipse , "SPO2" , "96%" ,"Spm"),
-//            )
-//
-//        adapter = CardAdapter(cardData)
-//        recyclerView.adapter = adapter
+        cardItem2Rv = view.findViewById(R.id.cardItem2Rv)
+        cardItem2Rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        val items = listOf(
+            CardItem2("Pharmacy", R.drawable.pharmacy_image),
+            CardItem2("Nutrition", R.drawable.nutrition_image),
+            CardItem2("Doctors", R.drawable.doctor_image),
+        )
+
+        cardItem2Adapter = CardItem2Adapter(items)  // Use the correct adapter
+        cardItem2Rv.adapter = cardItem2Adapter
 
         return view
     }

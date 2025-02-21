@@ -43,6 +43,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
+    implementation("com.google.android.material:material:1.7.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.google.android.material:material:1.10.0")

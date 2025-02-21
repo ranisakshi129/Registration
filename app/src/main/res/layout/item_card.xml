@@ -376,19 +376,14 @@
                 </LinearLayout>
             </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_280sdp"
-                    android:background="@color/purple_2"
-                    android:orientation="horizontal">
-
-                        <androidx.viewpager2.widget.ViewPager2
-                            android:id="@+id/viewPager1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal" />
-
-                </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingVertical="10dp"
+                android:clipToPadding="false"/>
 
 
         <LinearLayout
@@ -756,7 +751,6 @@
                     android:radius="30dp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginLeft="@dimen/_17sdp"
-                    app:cardBackground="@gradient"
                     android:layout_marginBottom="@dimen/_10sdp"
                     app:cardElevation="5dp">
 
@@ -1165,7 +1159,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/_270sdp"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
                 android:background="@drawable/meditation_image"
@@ -1173,14 +1167,13 @@
                 android:layout_marginLeft="@dimen/_17sdp">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
+                        android:layout_width="@dimen/_300sdp"
+                        android:layout_height="@dimen/_300sdp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/meditation_image" />
 
                     <ImageView
@@ -1242,6 +1235,88 @@
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/purple_2">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_150sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:radius="30dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_17sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/doctors_image"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_110sdp"
+                        android:layout_marginTop="@dimen/_83sdp"
+                        android:src="@drawable/old_man_image"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:layout_marginLeft="@dimen/_140sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:src="@drawable/transparent_image"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_marginLeft="@dimen/_193sdp"
+                        android:layout_marginTop="@dimen/_23sdp"
+                        android:src="@drawable/transparent_light"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_70sdp"
+                        android:layout_marginTop="@dimen/_75sdp"
+                        android:src="@drawable/transparen_line"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_17sdp"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/saves"/>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cardItem2Rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
         </LinearLayout>
 
     </ScrollView>
